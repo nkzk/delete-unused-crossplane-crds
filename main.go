@@ -89,7 +89,7 @@ func main() {
 					deleteGVR(client, schema.GroupVersionResource{
 						Group:    "apiextensions.k8s.io",
 						Version:  "v1",
-						Resource: "customresourcedefinition",
+						Resource: "customresourcedefinitions",
 					},
 						name,
 						true)
