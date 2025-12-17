@@ -6,6 +6,13 @@ For existing Crossplane installations, after setting up [Managed Resource Activa
 
 In current kubectl context, this tool goes through all the *Managed Resource*'s, and deletes all corresponding CRD's that are unused and are not activated by any [MRAP](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/).
 
+
+### Install
+
+```sh
+go install github.com/nkzk/delete-unused-crossplane-crd@latest
+```
+
 ### Usage
 
 ```sh
@@ -19,13 +26,13 @@ In current kubectl context, this tool goes through all the *Managed Resource*'s,
 
 #### dry-run delete
 ```sh
-go run . --delete
+delete-unused-crossplane-crd  --delete
 ```
 
 #### [destructive] delete unused crds
 
 ```
-go run . --delete --dry-run=false
+delete-unused-crossplane-crd  --delete --dry-run=false
 ```
 
 ### Note
