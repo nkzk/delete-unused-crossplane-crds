@@ -1,4 +1,4 @@
-module github.com/nkzk/find-unused-managed-resource-definitions
+module github.com/nkzk/delete-unused-crossplane-crds
 
 go 1.25.5
 
