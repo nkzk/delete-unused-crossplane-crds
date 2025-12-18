@@ -14,7 +14,7 @@ go install github.com/nkzk/delete-unused-crossplane-crd@latest
 
 ### Usage
 
-```sh
+```bash
   -delete
     	DESTRUCTIVE: delete unused managed resource CRD's
   -dry-run
@@ -37,10 +37,10 @@ Delete it before proceeding, otherwise this tool will mark no MRD's for deletion
 delete-unused-crossplane-crd  --delete
 ```
 
-#### [destructive] delete unused crds
+#### delete unused crds
 
-```
-delete-unused-crossplane-crd  --delete --dry-run=false
+```sh
+delete-unused-crossplane-crd --delete --dry-run=false
 ```
 
 ### Note
@@ -51,6 +51,6 @@ Proceed with caution and double-check the dry-run output anyways.
 
 #### Bottleneck
 
-A bottleneck in the current implemention is that a list call is sent to the kubernetes api server for each MRD to veirfy that it is not in use.
+A bottleneck in the current implemention is that a list call is sent to the kubernetes api server for each MRD to verify that it is not in use.
 
 The operation may therefore take a few minutes to complete.
