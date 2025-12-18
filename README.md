@@ -2,10 +2,9 @@
 
 Crossplane offers a "ManagedResourceDefinition" CRD as a solution to the [CRD scaling problem](https://docs.crossplane.io/latest/managed-resources/managed-resource-definitions/#the-crd-scaling-problem).
 
-For existing Crossplane installations, after setting up [Managed Resource Activation Policies](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/) and updating Crossplane's [defaultActivations](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/#activate-everything-default-behavior), you still need to manually clean up the CRDS that were installed by the providers.
+For existing Crossplane installations, after setting up [Managed Resource Activation Policies](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/) and updating Crossplane's [defaultActivations](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/#activate-everything-default-behavior), you still need to manually clean up the CRD and MRD's that were installed by the providers.
 
-In current kubectl context, this tool goes through all the *Managed Resource*'s, and deletes all corresponding CRD's that are unused and are not activated by any [MRAP](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/).
-
+In current kubectl context, this tool goes through all the _Managed Resource_'s, and deletes all corresponding CRD's that are unused and are not activated by any [MRAP](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/).
 
 ### Install
 
@@ -21,10 +20,17 @@ go install github.com/nkzk/delete-unused-crossplane-crd@latest
   -dry-run
     	dry-run destructive operations. if true (default), --delete is not destructive (default true)
   -kubeconfig string
-    	(optional) absolute path to the kubeconfig file 
+    	(optional) absolute path to the kubeconfig file
 ```
 
+### Delete default managed resource activation policy
+
+Ref. [docs](https://docs.crossplane.io/latest/managed-resources/managed-resource-activation-policies/#activate-everything-default-behavior), existing installations will have a default MRAP that enables everything.
+
+Delete it before proceeding, otherwise this tool will mark no MRD's for deletion.
+
 #### dry-run delete
+
 ```sh
 delete-unused-crossplane-crd  --delete
 ```
@@ -36,7 +42,7 @@ delete-unused-crossplane-crd  --delete --dry-run=false
 ```
 
 ### Note
+
 Although destructive, this only deletes CRD's that are not in use.
 
 Proceed with caution and double-check the dry-run output anyways.
-
